@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - Pawland</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <div class="logo">🐾 Pawland</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">🏠 หน้าแรก</a></li>
+                    <li><a href="products.html">🛍️ สินค้า</a></li>
+                    <li><a href="about.html">ℹ️ เกี่ยวกับเรา</a></li>
+                    <li><a href="contact.html">📧 ติดต่อ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>🐾 สมัครสมาชิก</h1>
+                <p>สร้างบัญชีใหม่เพื่อเริ่มต้นการช้อปปิ้ง</p>
+            </div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">ชื่อผู้ใช้ *</label>
+                        <input type="text" id="username" name="username" required autocomplete="username">
+                        <span class="error-message" id="usernameError"></span>
+                        <small>ความยาว 3-50 ตัวอักษร</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">อีเมล *</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">รหัสผ่าน *</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" required autocomplete="new-password">
+                            <button type="button" class="toggle-password" onclick="togglePassword('password')">👁️</button>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                        <small>อย่างน้อย 6 ตัวอักษร</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">ยืนยันรหัสผ่าน *</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password">
+                            <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">👁️</button>
+                        </div>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">ชื่อ</label>
+                        <input type="text" id="firstName" name="firstName" autocomplete="given-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">นามสกุล</label>
+                        <input type="text" id="lastName" name="lastName" autocomplete="family-name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">ที่อยู่</label>
+                    <textarea id="address" name="address" rows="3" autocomplete="street-address"></textarea>
+                </div>
+
+                <button type="submit" class="btn-auth btn-primary">สมัครสมาชิก</button>
+
+                <div class="auth-links">
+                    <p>มีบัญชีอยู่แล้ว? <a href="login.html">เข้าสู่ระบบ</a></p>
+                </div>
+            </form>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 pawland. All rights reserved.</p>
+        <p>ร้านขายสุนัข แมว อาหาร และของเล่นคุณภาพ ส่งตรงถึงบ้าน</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

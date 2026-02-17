@@ -455,7 +455,9 @@ function loadWishlist() {
 
 function updateCartCount() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cartCount').textContent = count;
+    const cartCountEl = document.getElementById('cartCount');
+    if (!cartCountEl) return; // หน้าแรกไม่มีตะกร้า
+    cartCountEl.textContent = count;
 }
 
 function renderCartItems() {
@@ -715,6 +717,172 @@ document.addEventListener('DOMContentLoaded', function() {
         cartModal.addEventListener('click', function(e) {
             if (e.target === cartModal) {
                 cartModal.classList.remove('show');
+            }
+        });
+    }
+
+    // Hero slider (หน้าแรก)
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider) {
+        const slides = heroSlider.querySelectorAll('.hero-slide');
+        const dotsContainer = document.querySelector('.hero-dots');
+        const toggleBtn = document.querySelector('.hero-toggle');
+        let currentIndex = 0;
+        let autoSlideTimer = null;
+        let pointerDownX = null;
+        let pointerDownY = null;
+        let isDragging = false;
+        let isPaused = false;
+
+        function createDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'hero-dot' + (index === currentIndex ? ' active' : '');
+                dot.type = 'button';
+                dot.setAttribute('aria-label', `สไลด์ที่ ${index + 1}`);
+                dot.addEventListener('click', () => goToSlide(index, false));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateActiveSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentIndex);
+            });
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('.hero-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+        }
+
+        function goToSlide(index, fromAuto = false) {
+            if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else if (index >= slides.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            updateActiveSlide();
+            if (!fromAuto) {
+                restartAutoSlide();
+            }
+        }
+
+        function nextSlide(fromAuto = false) {
+            goToSlide(currentIndex + 1, fromAuto);
+        }
+
+        function prevSlide(fromAuto = false) {
+            goToSlide(currentIndex - 1, fromAuto);
+        }
+
+        function startAutoSlide() {
+            // กันการสร้าง interval ซ้อน
+            stopAutoSlide();
+            if (isPaused) return;
+            autoSlideTimer = setInterval(() => nextSlide(true), 5000);
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideTimer) {
+                clearInterval(autoSlideTimer);
+                autoSlideTimer = null;
+            }
+        }
+
+        function restartAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+
+        // Init
+        if (slides.length > 0) {
+            createDots();
+            updateActiveSlide();
+            startAutoSlide();
+        }
+
+        function updateToggleUi() {
+            if (!toggleBtn) return;
+            toggleBtn.textContent = isPaused ? '▶' : '❚❚';
+            toggleBtn.setAttribute('aria-label', isPaused ? 'เล่นการเลื่อนอัตโนมัติ' : 'หยุดการเลื่อนอัตโนมัติ');
+        }
+
+        if (toggleBtn) {
+            updateToggleUi();
+            toggleBtn.addEventListener('click', () => {
+                isPaused = !isPaused;
+                if (isPaused) {
+                    stopAutoSlide();
+                } else {
+                    startAutoSlide();
+                }
+                updateToggleUi();
+            });
+        }
+
+        // Swipe / drag to slide (mobile + desktop)
+        heroSlider.addEventListener('pointerdown', (e) => {
+            // ไม่ให้ลากแล้วเลือกข้อความ
+            heroSlider.setPointerCapture?.(e.pointerId);
+            pointerDownX = e.clientX;
+            pointerDownY = e.clientY;
+            isDragging = true;
+            stopAutoSlide();
+        });
+
+        heroSlider.addEventListener('pointermove', (e) => {
+            if (!isDragging || pointerDownX === null || pointerDownY === null) return;
+            // ถ้าลากแนวตั้งมากกว่าแนวนอน ให้ปล่อยไป (เลื่อนหน้า)
+            const dx = e.clientX - pointerDownX;
+            const dy = e.clientY - pointerDownY;
+            if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10) {
+                // ยอมให้ scroll ธรรมชาติ
+                isDragging = false;
+                pointerDownX = null;
+                pointerDownY = null;
+                startAutoSlide();
+            }
+        });
+
+        heroSlider.addEventListener('pointerup', (e) => {
+            if (pointerDownX === null || !isDragging) {
+                startAutoSlide();
+                return;
+            }
+            const dx = e.clientX - pointerDownX;
+            const threshold = 60;
+
+            isDragging = false;
+            pointerDownX = null;
+            pointerDownY = null;
+
+            if (dx > threshold) {
+                prevSlide(false);
+            } else if (dx < -threshold) {
+                nextSlide(false);
+            }
+            startAutoSlide();
+        });
+
+        heroSlider.addEventListener('pointercancel', () => {
+            isDragging = false;
+            pointerDownX = null;
+            pointerDownY = null;
+            startAutoSlide();
+        });
+
+        // pause autoplay when tab hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoSlide();
+            } else {
+                startAutoSlide();
             }
         });
     }

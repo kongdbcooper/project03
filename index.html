@@ -24,19 +24,76 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>ยินดีต้อนรับสู่ Pawland</h1>
-            <p class="hero-subtitle">สุนัขและแมวสุขภาพดี กับบริการที่ยอดเยี่ยม</p>
-            <div class="btn-group">
-                <a href="products.html" class="btn btn-primary">🛍️ เลือกสัตว์เลี้ยง</a>
-                <a href="contact.html" class="btn btn-secondary">💬 ติดต่อเรา</a>
+    <section class="hero hero--nike" id="home">
+        <div class="hero-pattern"></div>
+
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-media">
+                    <img src="assets/pawland-hero-welcome.png" alt="" loading="eager" decoding="async">
+                </div>
+                <div class="hero-overlay">
+                    <div class="hero-inner">
+                        <div class="hero-badge">🐾 ร้านสัตว์เลี้ยงคุณภาพ #1</div>
+                        <h1>ยินดีต้อนรับสู่ <span class="highlight">Pawland</span></h1>
+                        <p class="hero-subtitle">สุนัขและแมวสุขภาพดี กับบริการที่ยอดเยี่ยม<br>พร้อมส่งตรงถึงบ้านทั่วประเทศ</p>
+                        <div class="btn-group">
+                            <a href="products.html" class="btn btn-primary">🛍️ เลือกซื้อสินค้า</a>
+                            <a href="contact.html" class="btn btn-secondary">💬 ติดต่อเรา</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">สินค้า</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5,000+</div>
+                                <div class="stat-label">ลูกค้าพึงพอใจ</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">10+</div>
+                                <div class="stat-label">ปีประสบการณ์</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="hero-slide hero-slide--promo">
+                <div class="hero-media">
+                    <img src="assets/pawland-promo-hero.png" alt="โปรโมชันพิเศษ ส่งฟรีเมื่อครบ ฿1,000 ลดเพิ่ม 10%" loading="lazy" decoding="async">
+                </div>
+                <a class="hero-overlay hero-overlay--click" href="products.html" aria-label="ดูโปรโมชั่น"></a>
+            </div>
+
+            <div class="hero-slide">
+                <div class="hero-media">
+                    <img src="assets/pawland-hero-weekly-deal.png" alt="" loading="lazy" decoding="async">
+                </div>
+                <div class="hero-overlay">
+                    <div class="hero-inner">
+                        <div class="hero-badge">🔥 ดีลประจำสัปดาห์</div>
+                        <h1>โปรเด็ดสำหรับน้องหมา & น้องแมว<br><span class="highlight">ลดสูงสุด 30%</span></h1>
+                        <p class="hero-subtitle">อัปเดตสินค้าลดราคาใหม่ทุกสัปดาห์<br>ของมีจำนวนจำกัด รีบเลย!</p>
+                        <div class="btn-group">
+                            <a href="products.html" class="btn btn-primary">🛍️ ไปดูสินค้าลดราคา</a>
+                            <a href="contact.html" class="btn btn-secondary">💬 สอบถามโปร</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-controls">
+                <div class="hero-dots" aria-label="ตัวเลือกสไลด์"></div>
+                <button class="hero-toggle" type="button" aria-label="หยุดการเลื่อนอัตโนมัติ">❚❚</button>
+            </div>
+        </div>
+
+        <div class="hero-scroll">
+            <div class="scroll-indicator">↓</div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <div class="container">
         <section class="features-section">
             <h2 class="section-title">✨ คุณสมบัติของเรา</h2>
@@ -64,38 +121,55 @@
             </div>
         </section>
 
-        <!-- Browse Section -->
         <section class="browse-section">
-            <h2 class="section-title">🐾 เลือกดูตามประเภท</h2>
+            <div class="section-header">
+                <h2 class="section-title">🐾 เลือกดูตามประเภท</h2>
+                <p class="section-subtitle">ค้นหาสิ่งที่คุณต้องการได้ง่ายๆ</p>
+            </div>
             <div class="browse-grid">
                 <a href="products.html?category=dog" class="browse-card dog-card">
                     <div class="browse-icon">🐕</div>
                     <h3>สุนัข</h3>
-                    <p>สุนัขสายพันธุ์ต่างๆ ดี</p>
+                    <p>สุนัขสายพันธุ์ต่างๆ คุณภาพดี</p>
+                    <span class="browse-link">ดูสินค้า →</span>
                 </a>
                 <a href="products.html?category=cat" class="browse-card cat-card">
                     <div class="browse-icon">🐱</div>
                     <h3>แมว</h3>
-                    <p>แมวพันธุ์ต่างๆ คุณภาพดี</p>
+                    <p>แมวพันธุ์ต่างๆ น่ารัก สุขภาพดี</p>
+                    <span class="browse-link">ดูสินค้า →</span>
                 </a>
                 <a href="products.html?category=food" class="browse-card food-card">
                     <div class="browse-icon">🍖</div>
                     <h3>อาหาร</h3>
-                    <p>อาหารสัตว์เลี้ยงคุณภาพ</p>
+                    <p>อาหารสัตว์เลี้ยงคุณภาพสูง</p>
+                    <span class="browse-link">ดูสินค้า →</span>
                 </a>
                 <a href="products.html?category=toy" class="browse-card toy-card">
                     <div class="browse-icon">🎾</div>
                     <h3>ของเล่น</h3>
                     <p>ของเล่นสำหรับสัตว์เลี้ยง</p>
+                    <span class="browse-link">ดูสินค้า →</span>
                 </a>
             </div>
         </section>
 
-      
-        <!-- Testimonials Section -->
-    <div class="container">
+        <section class="promo-banner">
+            <div class="promo-content">
+                <div class="promo-icon">🎉</div>
+                <div class="promo-text">
+                    <h3>โปรโมชั่นพิเศษ!</h3>
+                    <p>ซื้อครบ 1,000 บาท ส่งฟรีทั่วประเทศ + รับส่วนลดเพิ่ม 10%</p>
+                </div>
+                <a href="products.html" class="btn-promo">ดูโปรโมชั่น</a>
+            </div>
+        </section>
+
         <section class="testimonials-section">
-            <h2 class="section-title">💬 รีวิวจากลูกค้า</h2>
+            <div class="section-header">
+                <h2 class="section-title">💬 รีวิวจากลูกค้า</h2>
+                <p class="section-subtitle">เสียงจากผู้ที่ไว้วางใจเรา</p>
+            </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -144,41 +218,26 @@
                 </div>
             </div>
         </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>พร้อมเริ่มต้นการเดินทางกับสัตว์เลี้ยงตัวใหม่แล้วหรือยัง?</h2>
+                <p>ค้นหาสัตว์เลี้ยงที่ใช่สำหรับคุณ หรือติดต่อเราสำหรับคำแนะนำ</p>
+                <div class="cta-buttons">
+                    <a href="products.html" class="btn btn-primary btn-large">🛍️ ดูสินค้าทั้งหมด</a>
+                    <a href="contact.html" class="btn btn-secondary btn-large">💬 ติดต่อเรา</a>
+                </div>
+            </div>
+        </section>
     </div>
+</div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>🐾 เกี่ยวกับเรา</h4>
-                <ul>
-                    <li><a href="about.html">ข้อมูลเพิ่มเติม</a></li>
-                    <li><a href="about.html">พันธกิจของเรา</a></li>
-                    <li><a href="about.html">สถิติของเรา</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>📞 ติดต่อเรา</h4>
-                <ul>
-                    <li><a href="contact.html">ส่งข้อความ</a></li>
-                    <li><a href="contact.html">เบอร์โทรศัพท์</a></li>
-                    <li><a href="contact.html">ช่องทางอื่นๆ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>🛍️ สินค้า</h4>
-                <ul>
-                    <li><a href="products.html?category=dog">ดูสัตว์เลี้ยง</a></li>
-                    <li><a href="products.html?category=dog-food">ดูอาหาร</a></li>
-                    <li><a href="products.html?category=dog-toy">ดูของเล่น</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Pawland. All rights reserved.</p>
-            <p>ร้านขายสุนัข แมว อาหาร และของเล่นคุณภาพ ส่งตรงถึงบ้าน</p>
-        </div>
+        <p>&copy; 2024 pawland. All rights reserved.</p>
+        <p>ร้านขายสุนัข แมว อาหาร และของเล่นคุณภาพ ส่งตรงถึงบ้าน</p>
     </footer>
 
     <script src="script.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

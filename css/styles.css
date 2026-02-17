@@ -108,12 +108,366 @@ nav {
     pointer-events: none;
 }
 
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInDown 0.8s ease-out 0.2s both;
+}
+
+.hero h1 .highlight {
+    background: linear-gradient(135deg, #fff 0%, #ffe0b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    display: block;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
     max-width: 900px;
     margin: 0 auto;
     animation: slideUp 0.8s ease-out;
+}
+
+.hero-slider {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+}
+
+.hero-slide--promo {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-promo-link {
+    display: block;
+    width: 100%;
+    max-width: 980px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transform: translateY(0);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-promo-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.hero-promo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-controls {
+    position: absolute;
+    left: 50%;
+    bottom: 4.5rem;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    z-index: 3;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(10px);
+}
+
+.hero-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.2s, transform 0.2s;
+    backdrop-filter: blur(6px);
+}
+
+/* ไม่มีลูกศรเลื่อน (เผื่อมีหลงเหลือ) */
+.hero-prev,
+.hero-next {
+    display: none !important;
+}
+
+.hero-arrow:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.hero-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.hero-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, width 0.2s;
+}
+
+.hero-dot.active {
+    width: 22px;
+    background: #fff;
+}
+
+/* Nike-like hero slider (full-bleed image + overlay text) */
+.hero.hero--nike {
+    padding: 0;
+    text-align: left;
+}
+
+.hero.hero--nike .hero-pattern {
+    display: none;
+}
+
+.hero.hero--nike .hero-slider {
+    max-width: 100%;
+    margin: 0;
+    height: auto;
+    display: grid;
+}
+
+.hero.hero--nike .hero-slide {
+    grid-area: 1 / 1;
+    position: relative;
+    opacity: 0;
+    pointer-events: none;
+    transform: none;
+    transition: opacity 700ms ease;
+}
+
+.hero.hero--nike .hero-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+}
+
+.hero.hero--nike .hero-media img {
+    width: 100%;
+    height: clamp(420px, 72vh, 760px);
+    object-fit: cover;
+    display: block;
+}
+
+.hero.hero--nike .hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.00) 100%);
+}
+
+.hero.hero--nike .hero-overlay--click {
+    background: transparent;
+    cursor: pointer;
+}
+
+.hero.hero--nike .hero-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    color: #fff;
+}
+
+.hero.hero--nike h1,
+.hero.hero--nike p {
+    text-shadow: none;
+}
+
+.hero.hero--nike h1 {
+    font-size: clamp(2.4rem, 4.2vw, 4rem);
+    margin-bottom: 1.25rem;
+}
+
+.hero.hero--nike .hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.hero.hero--nike .btn {
+    box-shadow: 0 10px 26px rgba(0,0,0,0.28);
+}
+
+.hero.hero--nike .hero-stats {
+    justify-content: flex-start;
+    margin-top: 2.25rem;
+}
+
+.hero.hero--nike .stat-number {
+    text-shadow: none;
+}
+
+.hero.hero--nike .hero-controls {
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 0.8rem;
+    padding: 0.45rem 0.7rem;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.hero-toggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-toggle:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.22);
+}
+
+/* promo slide: use full image, hide legacy promo link styles */
+.hero.hero--nike .hero-slide--promo {
+    display: block;
+    justify-content: initial;
+}
+
+.hero.hero--nike .hero-promo-link,
+.hero.hero--nike .hero-promo-image {
+    display: none;
 }
 
 @keyframes slideUp {
@@ -199,8 +553,22 @@ nav {
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 0.5rem;
     color: #6d4c41;
+    font-weight: 800;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #795548;
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 .features-section {
@@ -325,6 +693,23 @@ nav {
     color: #795548;
     font-size: 0.95rem;
     text-align: center;
+    margin-bottom: 1rem;
+}
+
+.browse-link {
+    display: inline-block;
+    color: #8d6e63;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: auto;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.browse-card:hover .browse-link {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .about-section {
@@ -609,16 +994,47 @@ nav {
 
 .cta-section {
     text-align: center;
-    background: linear-gradient(135deg, rgba(141, 110, 99, 0.05) 0%, rgba(216, 67, 21, 0.05) 100%);
-    padding: 3rem 2rem;
-    border-radius: 15px;
-    border: 2px solid #e0d7d3;
+    background: linear-gradient(135deg, rgba(141, 110, 99, 0.08) 0%, rgba(216, 67, 21, 0.08) 100%);
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    border: 2px solid rgba(141, 110, 99, 0.2);
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.cta-section h3 {
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(141, 110, 99, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section h2 {
     color: #6d4c41;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.cta-section p {
+    color: #795548;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta-buttons {
@@ -628,24 +1044,114 @@ nav {
     flex-wrap: wrap;
 }
 
+.btn-large {
+    padding: 1.3rem 3rem;
+    font-size: 1.1rem;
+}
+
+.promo-banner {
+    background: linear-gradient(135deg, #d84315 0%, #bf360c 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 4rem 0;
+    box-shadow: 0 10px 30px rgba(216, 67, 21, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.promo-icon {
+    font-size: 4rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.promo-text {
+    flex: 1;
+    min-width: 250px;
+    color: white;
+}
+
+.promo-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+
+.promo-text p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.btn-promo {
+    display: inline-block;
+    background: white;
+    color: #d84315;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-promo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    background: #fff5f0;
+}
+
 .testimonials-section {
     padding: 3rem 0;
 }
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
 .testimonial-card {
     background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
     padding: 2.5rem 2rem;
-    border-radius: 15px;
+    border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     border-left: 5px solid #8d6e63;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
+    backdrop-filter: blur(10px);
 }
 
 .testimonial-card::before {
@@ -928,21 +1434,7 @@ footer {
 .footer-section a:hover {
     color: #d7ccc8;
 }
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-bottom p {
-    margin: 0.5rem 0;
-    color: #bcaaa4;
-    font-size: 0.9rem;
-}
-
+ 
 .hidden {
     display: none;
 }
@@ -1007,6 +1499,25 @@ footer {
     
     .hero-content {
         max-width: 100%;
+    }
+
+    .hero.hero--nike .hero-inner {
+        padding: 0 1.25rem;
+        text-align: center;
+    }
+
+    .hero.hero--nike .hero-overlay {
+        background: linear-gradient(180deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.00) 100%);
+        align-items: flex-end;
+        padding-bottom: 3.25rem;
+    }
+
+    .hero.hero--nike .hero-stats {
+        justify-content: center;
+    }
+
+    .hero.hero--nike .hero-controls {
+        bottom: 0.85rem;
     }
     
     .hero h1 {
@@ -1284,6 +1795,108 @@ footer {
     .cta-buttons .btn {
         padding: 0.9rem 1.5rem;
         font-size: 0.9rem;
+    }
+    
+    .hero {
+        padding: 5rem 1.5rem 4rem;
+        min-height: auto;
+    }
+    
+    .hero-slider::after {
+        display: none;
+    }
+    
+    .hero-content {
+        padding: 2.2rem 1.6rem 2.6rem;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem !important;
+    }
+    
+    .hero-stats {
+        gap: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 1.2rem;
+    }
+
+    .hero-content::before,
+    .hero-content::after {
+        display: none;
+    }
+
+    .hero-controls {
+        bottom: 3rem;
+        gap: 0.75rem;
+    }
+
+    .hero-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 1.3rem;
+    }
+    
+    .promo-banner {
+        padding: 2rem 1.5rem;
+        margin: 3rem 0;
+    }
+    
+    .promo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .promo-icon {
+        font-size: 3rem;
+    }
+    
+    .promo-text h3 {
+        font-size: 1.4rem;
+    }
+    
+    .promo-text p {
+        font-size: 1rem;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .browse-card {
+        min-height: 250px;
+        padding: 2rem 1.5rem;
+    }
+    
+    .browse-icon {
+        font-size: 3.5rem;
     }
 
 .stats-section {
@@ -1566,4 +2179,4 @@ footer {
         height: 24px;
         font-size: 0.7rem;
     }
-}   
+} 
