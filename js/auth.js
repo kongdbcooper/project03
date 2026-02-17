@@ -89,7 +89,7 @@ if (loginForm) {
         submitBtn.textContent = 'กำลังเข้าสู่ระบบ...';
         
         try {
-            const response = await fetch('php/login.php', {
+            const response = await fetch('../php/login.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ if (registerForm) {
         submitBtn.textContent = 'กำลังสมัครสมาชิก...';
         
         try {
-            const response = await fetch('php/register.php', {
+            const response = await fetch('../php/register.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -236,7 +236,7 @@ if (registerForm) {
 // Check if user is logged in on page load
 document.addEventListener('DOMContentLoaded', async function() {
     try {
-        const response = await fetch('php/check_session.php');
+        const response = await fetch('../php/check_session.php');
         const data = await response.json();
         
         if (data.logged_in && data.user) {
@@ -276,7 +276,7 @@ async function logout() {
     }
     
     try {
-        const response = await fetch('php/logout.php');
+        const response = await fetch('../php/logout.php');
         const data = await response.json();
         
         if (data.success) {

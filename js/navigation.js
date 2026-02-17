@@ -2,7 +2,7 @@
 
 async function updateNavigation() {
     try {
-        const response = await fetch('php/check_session.php');
+        const response = await fetch('../php/check_session.php');
         const data = await response.json();
         
         const navLinks = document.querySelector('.nav-links');
@@ -55,7 +55,7 @@ async function logout() {
     }
     
     try {
-        const response = await fetch('php/logout.php');
+        const response = await fetch('../php/logout.php');
         const data = await response.json();
         
         if (data.success) {

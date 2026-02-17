@@ -29,7 +29,7 @@ function getCurrentUser() {
 // ตรวจสอบว่าต้อง login ก่อนเข้าถึงหน้า
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: login.html');
+        header('Location: ../html/login.html');
         exit();
     }
 }
@@ -37,7 +37,7 @@ function requireLogin() {
 // ตรวจสอบว่าถ้า login แล้วให้ redirect ไปหน้าแรก
 function requireGuest() {
     if (isLoggedIn()) {
-        header('Location: index.html');
+        header('Location: ../html/index.html');
         exit();
     }
 }
