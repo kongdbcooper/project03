@@ -41,7 +41,6 @@ async function updateNavigation() {
 
         // เช็คว่าเข้าระบบอยู่หรือไม่
         if (data.logged_in && data.user) {
-            // โค้ดของคุณที่ปลอดภัย 100%
             const logoutLink = document.createElement('a');
             logoutLink.href = '#';
             logoutLink.classList.add('logout-link');
