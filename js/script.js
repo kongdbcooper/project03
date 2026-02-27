@@ -188,7 +188,7 @@ const products = [
     // แมว พันธุ์ต่างๆ
     {
         id: 24,
-        image: 'assets/cats/perone.jpg',
+        image: 'https://pub-ebdc163064e44525a7425131ef1bea72.r2.dev/1771139713383.jpg',
         name: 'เปอร์เซีย (Persian)',
         category: 'cat',
         price: 16500,
@@ -228,7 +228,7 @@ const products = [
     },
     {
         id: 29,
-        image: 'assets/cats/fikone.jpg',
+        image: 'https://pub-ebdc163064e44525a7425131ef1bea72.r2.dev/1771139710873.jpg',
         name: 'สฟิงซ์ (Sphynx)',
         category: 'cat',
         price: 19800,
@@ -520,10 +520,11 @@ function renderProducts(category = 'all', searchTerm = '') {
                     ${isWishlisted ? '❤️' : '🤍'}
                 </button>
 
-                <div class="product-image">
-                   ${product.image 
-                     ? `<img src="../${product.image}" alt="${product.name}">`:''}
-                </div>
+            <div class="product-image">
+                ${product.image 
+                ? `<img src="${product.image.startsWith('http') ? product.image : '../'+ product.image}" alt="${product.name}">` 
+                : ''}
+            </div>
                 <div class="product-info">
                     <div class="product-name">${product.name}</div>
                     <div class="product-rating">${ratingStars} ${product.rating}</div>
